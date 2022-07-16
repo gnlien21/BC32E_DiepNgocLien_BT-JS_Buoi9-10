@@ -188,3 +188,33 @@ document.querySelector('#btnThem').onclick = function () {
 }
 
 
+document.querySelector('#btnTimNV').onclick = function(){
+    var searchingValue = document.querySelector('#searchName').value;
+    var nvXSArr = [];
+    var nvGioiArr = [];
+    var nvKhaArr = [];
+    var nvTBArr = [];
+    for (var index = 0; index < mangNhanVien.length; index++){
+        if (mangNhanVien[index].loaiNhanVien === 'nhân viên xuất sắc'){
+            nvXSArr.push(mangNhanVien[index]);
+        } else if (mangNhanVien[index].loaiNhanVien === 'nhân viên giỏi'){
+            nvGioiArr.push(mangNhanVien[index]);
+        } else if (mangNhanVien[index].loaiNhanVien === 'nhân viên khá'){
+            nvKhaArr.push(mangNhanVien[index]);
+        } else if (mangNhanVien[index].loaiNhanVien === 'nhân viên trung bình'){
+            nvTBArr.push(mangNhanVien[index]);
+        } 
+    }
+
+    if (searchingValue.includes('xuat sac')){
+        loadTableNhanVien(nvXSArr);
+    } else if (searchingValue.includes('gioi')){
+        loadTableNhanVien(nvGioiArr);
+    } else if (searchingValue.includes('kha')){
+        loadTableNhanVien(nvKhaArr);
+    } else if (searchingValue.includes('trung binh')){
+        loadTableNhanVien(nvTBArr);
+    } else {
+        loadTableNhanVien(mangNhanVien);
+    }
+}
